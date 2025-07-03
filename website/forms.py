@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Record
 
 
 class SignUpForm(UserCreationForm):
@@ -29,3 +30,44 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
+
+class AddRecordForm(forms.ModelForm):
+    class Meta:
+        model = Record
+        fields = '__all__'
+        
+        
+    def __init__(self, *args, **kwargs):
+        super(AddRecordForm, self).__init__(*args, **kwargs)
+
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['first_name'].widget.attrs['placeholder'] = 'First Name'
+        self.fields['first_name'].label = ''
+        
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['placeholder'] = 'Last Name'
+        self.fields['last_name'].label = ''
+        
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email'
+        self.fields['email'].label = ''
+        
+        self.fields['phone'].widget.attrs['class'] = 'form-control'
+        self.fields['phone'].widget.attrs['placeholder'] = 'Phone'
+        self.fields['phone'].label = ''
+        
+        self.fields['address'].widget.attrs['class'] = 'form-control'
+        self.fields['address'].widget.attrs['placeholder'] = 'Address'
+        self.fields['address'].label = ''
+        
+        self.fields['city'].widget.attrs['class'] = 'form-control'
+        self.fields['city'].widget.attrs['placeholder'] = 'City'
+        self.fields['city'].label = ''
+        
+        self.fields['state'].widget.attrs['class'] = 'form-control'
+        self.fields['state'].widget.attrs['placeholder'] = 'State'
+        self.fields['state'].label = ''
+        
+        self.fields['zipcode'].widget.attrs['class'] = 'form-control'
+        self.fields['zipcode'].widget.attrs['placeholder'] = 'Zipcode'
+        self.fields['zipcode'].label = ''        
